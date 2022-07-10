@@ -1,17 +1,11 @@
-namespace solutions._2015.day1;
+namespace solutions._2015;
 
 public class Day1
 {
-    public Day1()
+
+    public int Part_1(string? input = null)
     {
-    }
-    
-    public int Part_1(string input = "")
-    {
-        if (input == "")
-        {
-            input = GetInput();
-        }
+        input = input ?? GetInput();
 
         int currentFloor = 0;
 
@@ -23,12 +17,9 @@ public class Day1
         return currentFloor;
     }
     
-        public int Part_2(string input = "")
+        public int Part_2(string? input = null)
     {
-        if (input == "")
-        {
-            input = GetInput();
-        }
+        input = input ?? GetInput();
 
         int currentFloor = 0;
         int characterPosition = 1;

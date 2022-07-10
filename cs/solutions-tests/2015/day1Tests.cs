@@ -1,16 +1,16 @@
 using FluentAssertions;
 using NUnit.Framework;
-using solutions._2015.day1;
+using solutions._2015;
 
 namespace solutions_tests._2015;
 
 public class day1Tests
 {
-    private Day1 _day1;
+    private readonly Day1 day;
 
     public day1Tests()
     {
-        _day1 = new Day1();
+        day = new Day1();
     }
 
     [TestCase("(())", 0)]
@@ -24,7 +24,7 @@ public class day1Tests
     [TestCase(")())())", -3)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day1.Part_1(input).Should().Be(expected);
+        day.Part_1(input).Should().Be(expected);
     }
     
     
@@ -33,6 +33,6 @@ public class day1Tests
     [TestCase("()())", 5)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        _day1.Part_2(input).Should().Be(expected);
+        day.Part_2(input).Should().Be(expected);
     }
 }
