@@ -17,7 +17,7 @@ public class Day2Tests
     [TestCase("1x1x10", 43)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day.Part_1(input).Should().Be(expected);
+        Day2.Part_1(input).Should().Be(expected);
     }
     
     [TestCase("2x3x4", 34)]

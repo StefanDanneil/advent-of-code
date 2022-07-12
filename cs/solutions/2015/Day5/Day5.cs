@@ -6,47 +6,29 @@ public class Day5
     public int Part_1(string? input = null)
     {
         input = input ?? GetInput();
-        string[] inputs = input.Split('\n');
-        int niceCount = 0;
-        
-        foreach (var s in inputs)
-        {
-            if (HasRepeatingCharacter(s) && HasAtLeastThreeVowels(s) && !ContainsForbiddenString(s))
-            {
-                niceCount++;
-            }
-        }
+        var inputs = input.Split('\n');
 
-        return niceCount;
+        return inputs.Count(s => HasRepeatingCharacter(s) && HasAtLeastThreeVowels(s) && !ContainsForbiddenString(s));
     }
     
     public int Part_2(string? input = null)
     {
         input = input ?? GetInput();
-        string[] inputs = input.Split('\n');
-        int niceCount = 0;
-        
-        foreach (var s in inputs)
-        {
-            if (HasRepeatingLetterSandwich(s) && HasNonOverlappingRepeatingPair(s))
-            {
-                niceCount++;
-            }
-        }
+        var inputs = input.Split('\n');
 
-        return niceCount;
+        return inputs.Count(s => HasRepeatingLetterSandwich(s) && HasNonOverlappingRepeatingPair(s));
     }
 
-    private string GetInput()
+    private static string GetInput()
     {
         return File.ReadAllText("./2015/Day5/input.txt");
     }
 
-    private bool HasAtLeastThreeVowels(string input)
+    private static bool HasAtLeastThreeVowels(string input)
     {
         const string vowels = "aeiou";
         var occurrences = 0;
-        foreach (var c in input.Where(c => vowels.Contains(c)))
+        foreach (var unused in input.Where(c => vowels.Contains(c)))
         {
             occurrences++;
             if (occurrences >= 3)
@@ -58,9 +40,9 @@ public class Day5
         return false;
     }
 
-    private bool ContainsForbiddenString(string input)
+    private static bool ContainsForbiddenString(string input)
     {
-        var forbiddenStrings = new string[]
+        var forbiddenStrings = new []
         {
             "ab", 
             "cd", 
@@ -71,7 +53,7 @@ public class Day5
         return forbiddenStrings.Any(input.Contains);
     }
     
-    private bool HasRepeatingCharacter(string input)
+    private static bool HasRepeatingCharacter(string input)
     {
         for (var i = 1; i < input.Length; i++)
         {
@@ -84,7 +66,7 @@ public class Day5
         return false;
     }
 
-    private bool HasRepeatingLetterSandwich(string input)
+    private static bool HasRepeatingLetterSandwich(string input)
     {
         for (var i = 2; i < input.Length; i++)
         {

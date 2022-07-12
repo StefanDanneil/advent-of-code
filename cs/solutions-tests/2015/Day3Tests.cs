@@ -18,7 +18,7 @@ public class Day3Tests
     [TestCase("^v^v^v^v^v", 2)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day.Part_1(input).Should().Be(expected);
+        Day3.Part_1(input).Should().Be(expected);
     }
     
     
@@ -28,6 +28,6 @@ public class Day3Tests
     [TestCase("^v^v^v^v^v", 11)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        _day.Part_2(input).Should().Be(expected);
+        Day3.Part_2(input).Should().Be(expected);
     }
 }

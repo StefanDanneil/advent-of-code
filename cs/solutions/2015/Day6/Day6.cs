@@ -1,5 +1,3 @@
-using System.Reflection.Metadata;
-
 namespace solutions._2015;
 
 public class Day6
@@ -8,7 +6,7 @@ public class Day6
     public int Part_1(string? input = null)
     {
         input = input ?? GetInput();
-        Grid grid = new Grid();
+        var grid = new Grid();
         var instructions = input.Split('\n');
         // split into meaningful steps
         foreach (var instruction in instructions)
@@ -33,7 +31,6 @@ public class Day6
         input = input ?? GetInput();
         Grid grid = new Grid();
         var instructions = input.Split('\n');
-        // split into meaningful steps
         foreach (var instruction in instructions)
         {
             var instructionComponents = instruction.Split(' ');
@@ -59,14 +56,14 @@ public class Day6
 
 public class Grid
 {
-    private List<List<Light>> lights = new();
+    private readonly List<List<Light>> _lights = new();
 
     public Grid()
     {
-        for (int i = 0; i < 1000; i++)
+        for (var i = 0; i < 1000; i++)
         {
             var currentRow = new List<Light>();
-            lights.Add(currentRow);
+            _lights.Add(currentRow);
             for (var j = 0; j < 1000; j++)
             {
                 currentRow.Add(new Light());
@@ -78,9 +75,9 @@ public class Grid
     {
         var count = 0;
         
-        for (int i = 0; i < 1000; i++)
+        for (var i = 0; i < 1000; i++)
         {
-            var currentRow = lights[i];
+            var currentRow = _lights[i];
             for (var j = 0; j < 1000; j++)
             {
                 if (currentRow[j].IsOn)
@@ -99,7 +96,7 @@ public class Grid
         
         for (int i = 0; i < 1000; i++)
         {
-            var currentRow = lights[i];
+            var currentRow = _lights[i];
             for (var j = 0; j < 1000; j++)
             {
                 totalBrightness += currentRow[j].Brightness;
@@ -140,7 +137,7 @@ public class Grid
         
         for (int i = lowerX; i <= upperX; i++)
         {
-            var currentRow = lights[i];
+            var currentRow = _lights[i];
             for (int j = lowerY; j <= upperY; j++)
             {
                 if (operation == "on")
@@ -169,7 +166,7 @@ public class Grid
 }
 public class Light
 {
-    public bool IsOn { get; set; } = false;
+    public bool IsOn { get; set; }
     
-    public int Brightness { get; set; } = 0;
+    public int Brightness { get; set; }
 }

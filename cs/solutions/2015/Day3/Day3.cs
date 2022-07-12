@@ -1,15 +1,13 @@
-using System.Data;
-
 namespace solutions._2015;
 
 public class Day3
 {
 
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
-        Santa santa = new Santa();
-        List<string> visited = new List<string>()
+        var santa = new Santa();
+        var visited = new List<string>()
         {
             "x0y0"
         };
@@ -21,12 +19,12 @@ public class Day3
         return visited.Distinct().Count();
     }
     
-    public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput();
-        Santa santa = new Santa();
-        Santa roboSanta = new Santa();
-        List<string> visited = new List<string>()
+        var santa = new Santa();
+        var roboSanta = new Santa();
+        var visited = new List<string>()
         {
             "x0y0"
         };
@@ -40,7 +38,7 @@ public class Day3
         return visited.Distinct().Count();
     }
 
-    private string GetInput()
+    private static string GetInput()
     {
         return File.ReadAllText("./2015/Day3/input.txt");
     }
@@ -48,8 +46,8 @@ public class Day3
 
 public class Santa
 {
-    private int _x = 0;
-    private int _y = 0;
+    private int _x;
+    private int _y;
 
     public void Move(char direction)
     {

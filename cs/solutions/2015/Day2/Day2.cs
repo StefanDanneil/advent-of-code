@@ -2,32 +2,28 @@ namespace solutions._2015;
 
 public class Day2
 {
-
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
-        string[] rows = input.Split('\n');
-        Int32 output = 0;
+        var rows = input.Split('\n');
+        var output = 0;
         
         foreach (var row in rows)
         {
-            int[] dimensions = row
+            var dimensions = row
                 .Split('x')
-                .Select(i => Int32.Parse(i))
+                .Select(int.Parse)
                 .ToArray();
 
-            int[] sides = new int[]
+            var sides = new []
             {
                 dimensions[0] * dimensions[1],
                 dimensions[1] * dimensions[2],
                 dimensions[0] * dimensions[2]
             };
-            
-            foreach (var side in sides)
-            {
-                output += side * 2;
-            }
-            
+
+            output += sides.Sum(side => side * 2);
+
             Array.Sort(sides);
 
             output += sides[0];
@@ -39,14 +35,14 @@ public class Day2
     public int Part_2(string? input = null)
     {
         input = input ?? GetInput(); 
-        string[] rows = input.Split('\n');
-        Int32 output = 0;
+        var rows = input.Split('\n');
+        var output = 0;
         
         foreach (var row in rows)
         {   
-            int[] dimensions = row
+            var dimensions = row
                 .Split('x')
-                .Select(i => Int32.Parse(i))
+                .Select(int.Parse)
                 .ToArray();
             
             Array.Sort(dimensions);
@@ -59,7 +55,7 @@ public class Day2
         return output;
     }
 
-    private string GetInput()
+    private static string GetInput()
     {
         return File.ReadAllText("./2015/Day2/input.txt");
     }
