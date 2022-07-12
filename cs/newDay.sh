@@ -46,7 +46,7 @@ namespace solutions_tests._2015;
 
 public class $1Tests
 {
-    private $1 _day;
+    private readonly $1 _day;
 
     public $1Tests()
     {
