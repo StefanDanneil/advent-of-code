@@ -24,7 +24,7 @@ public class $1
         throw new NotImplementedException();
     }
 
-    private string GetInput()
+    private static string GetInput()
     {
         return File.ReadAllText("./2015/$1/input.txt");
     }
