@@ -1,15 +1,32 @@
 #!/bin/bash
 
-mkdir solutions/2015/$1
-cd solutions/2015/$1
+determineNextDay () {
+  array=($(ls ./solutions/2015))
+  highestNumber=1;
+  
+  for i in "${array[@]}"
+  do : 
+    dayNumber=${i:3:3}
+     if (( $dayNumber > $highestNumber )); then
+        highestNumber=$dayNumber   
+     fi
+  done  
+  echo $((highestNumber + 1))
+}
+
+DAY_NAME=Day"$(determineNextDay)"
+TEST_FILE_NAME="$DAY_NAME"Tests
+
+mkdir solutions/2015/"$DAY_NAME"
+cd solutions/2015/"$DAY_NAME" || exit 1
 
 touch input.txt
-touch $1.cs
+touch "$DAY_NAME".cs
 
-cat > $1.cs << EOF
+cat > "$DAY_NAME".cs << EOF
 namespace solutions._2015;
 
-public class $1
+public class $DAY_NAME
 {
 
     public int Part_1(string? input = null)
@@ -17,7 +34,7 @@ public class $1
         input = input ?? GetInput();
         throw new NotImplementedException();
     }
-    
+
     public int Part_2(string? input = null)
     {
         input = input ?? GetInput();
@@ -26,31 +43,31 @@ public class $1
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2015/$1/input.txt");
+        return File.ReadAllText("./2015/$DAY_NAME/input.txt");
     }
 }
 EOF
 
 cd ../../..
 
-cd solutions-tests/2015
+cd solutions-tests/2015 || exit 1
 
-touch $1Tests.cs
+touch "$DAY_NAME"Tests.cs
 
-cat > $1Tests.cs << EOF
+cat > "$DAY_NAME"Tests.cs << EOF
 using FluentAssertions;
 using NUnit.Framework;
 using solutions._2015;
 
 namespace solutions_tests._2015;
 
-public class $1Tests
+public class $TEST_FILE_NAME
 {
-    private readonly $1 _day;
+    private readonly $DAY_NAME _day;
 
-    public $1Tests()
+    public $TEST_FILE_NAME()
     {
-        _day = new $1();
+        _day = new $DAY_NAME();
     }
 
     [TestCase("", 0)]
@@ -58,9 +75,9 @@ public class $1Tests
     {
         _day.Part_1(input).Should().Be(expected);
     }
-    
-    
-    
+
+
+
     [TestCase("", 0)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
