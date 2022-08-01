@@ -8,6 +8,7 @@ var day5 = new Day5();
 var day6 = new Day6();
 var day7 = new Day7();
 var day8 = new Day8();
+var day9 = new Day9();
 
 
 Console.WriteLine("2015 day 1 part 1 result is: " + day1.Part_1());
@@ -26,3 +27,5 @@ Console.WriteLine("2015 day 7 part 1 result is: " + day7.Part_1());
 Console.WriteLine("2015 day 7 part 2 result is: " + day7.Part_2());
 Console.WriteLine("2015 day 8 part 1 result is: " + day8.Part_1()); 
 Console.WriteLine("2015 day 8 part 2 result is: " + day8.Part_2());
+Console.WriteLine("2015 day 9 part 1 result is: " + day9.Part_1()); 
+Console.WriteLine("2015 day 9 part 2 result is: " + day9.Part_2());
