@@ -27,5 +27,5 @@ Console.WriteLine("2015 day 7 part 1 result is: " + day7.Part_1());
 Console.WriteLine("2015 day 7 part 2 result is: " + day7.Part_2());
 Console.WriteLine("2015 day 8 part 1 result is: " + day8.Part_1()); 
 Console.WriteLine("2015 day 8 part 2 result is: " + day8.Part_2());
-Console.WriteLine("2015 day 9 part 1 result is: " + day9.Part_1()); 
-Console.WriteLine("2015 day 9 part 2 result is: " + day9.Part_2());
+Console.WriteLine("2015 day 9 part 1 result is: " + Day9.Part_1()); 
+Console.WriteLine("2015 day 9 part 2 result is: " + Day9.Part_2());
