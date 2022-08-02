@@ -26,16 +26,15 @@ touch "$DAY_NAME".cs
 cat > "$DAY_NAME".cs << EOF
 namespace solutions._2015;
 
-public class $DAY_NAME
+public static class $DAY_NAME
 {
-
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
         throw new NotImplementedException();
     }
 
-    public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput();
         throw new NotImplementedException();
@@ -63,25 +62,16 @@ namespace solutions_tests._2015;
 
 public class $TEST_FILE_NAME
 {
-    private readonly $DAY_NAME _day;
-
-    public $TEST_FILE_NAME()
-    {
-        _day = new $DAY_NAME();
-    }
-
     [TestCase("", 0)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day.Part_1(input).Should().Be(expected);
+        $DAY_NAME.Part_1(input).Should().Be(expected);
     }
-
-
 
     [TestCase("", 0)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        _day.Part_2(input).Should().Be(expected);
+        $DAY_NAME.Part_2(input).Should().Be(expected);
     }
 }
 EOF
