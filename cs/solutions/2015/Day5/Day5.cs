@@ -3,7 +3,7 @@ namespace solutions._2015;
 public class Day5
 {
 
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
         var inputs = input.Split('\n');
@@ -11,7 +11,7 @@ public class Day5
         return inputs.Count(s => HasRepeatingCharacter(s) && HasAtLeastThreeVowels(s) && !ContainsForbiddenString(s));
     }
     
-    public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput();
         var inputs = input.Split('\n');
@@ -79,7 +79,7 @@ public class Day5
         return false;
     }
 
-    private bool HasNonOverlappingRepeatingPair(string input)
+    private static bool HasNonOverlappingRepeatingPair(string input)
     {
         for (var i = 2; i < input.Length; i++)
         {

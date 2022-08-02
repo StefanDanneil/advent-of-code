@@ -1,11 +1,9 @@
-using System;
-
 namespace solutions._2015;
 
 public class Day8
 {
 
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
         var rows = input.Split('\n');
@@ -47,7 +45,7 @@ public class Day8
         return output;
     }
 
-    public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput();
         var rows = input.Split('\n');

@@ -3,26 +3,19 @@ namespace solutions._2015;
 public class Day1
 {
 
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
 
-        int currentFloor = 0;
-
-        foreach (var character in input)
-        {
-            currentFloor = character == '(' ? currentFloor + 1 : currentFloor - 1;
-        }
-        
-        return currentFloor;
+        return input.Aggregate(0, (current, character) => character == '(' ? current + 1 : current - 1);
     }
     
-        public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput();
 
-        int currentFloor = 0;
-        int characterPosition = 1;
+        var currentFloor = 0;
+        var characterPosition = 1;
         foreach (var character in input)
         {
         
@@ -38,7 +31,7 @@ public class Day1
         throw new Exception("did not find the correct position");
     }
 
-    private string GetInput()
+    private static string GetInput()
     {
         return File.ReadAllText("./2015/day1/input.txt");
     }

@@ -7,15 +7,6 @@ namespace solutions_tests._2015;
 
 public class Day8Tests
 {
-    private readonly Day8 _day;
-    private readonly string _testInput;
-    
-    public Day8Tests()
-    {
-        _day = new Day8();
-        _testInput = GetInput();
-    }
-
     private static string GetInput()
     {
         return File.ReadAllText("./2015/Day8TestInput.txt");
@@ -24,7 +15,8 @@ public class Day8Tests
     [TestCase("", 12)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day.Part_1(_testInput).Should().Be(expected);
+        var testInput = GetInput();
+        Day8.Part_1(testInput).Should().Be(expected);
     }
 
 
@@ -32,6 +24,7 @@ public class Day8Tests
     [TestCase("", 19)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        _day.Part_2(_testInput).Should().Be(expected);
+        var testInput = GetInput();
+        Day8.Part_2(testInput).Should().Be(expected);
     }
 }

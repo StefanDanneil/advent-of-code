@@ -6,12 +6,6 @@ namespace solutions_tests._2015;
 
 public class Day6Tests
 {
-    private readonly Day6 _day;
-
-    public Day6Tests()
-    {
-        _day = new Day6();
-    }
 
     [TestCase("turn on 0,0 through 999,999", 1000000)]
     [TestCase("toggle 0,0 through 999,0", 1000)]
@@ -21,7 +15,7 @@ public class Day6Tests
     [TestCase("turn on 500,500 through 499,499", 4)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day.Part_1(input).Should().Be(expected);
+        Day6.Part_1(input).Should().Be(expected);
     }
     
     
@@ -30,6 +24,6 @@ public class Day6Tests
     [TestCase("toggle 0,0 through 999,999", 2000000)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        _day.Part_2(input).Should().Be(expected);
+        Day6.Part_2(input).Should().Be(expected);
     }
 }

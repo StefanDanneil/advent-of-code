@@ -4,14 +4,9 @@ using solutions._2015;
 
 namespace solutions_tests._2015;
 
-public class day1Tests
+public class Day1Tests
 {
-    private readonly Day1 day;
 
-    public day1Tests()
-    {
-        day = new Day1();
-    }
 
     [TestCase("(())", 0)]
     [TestCase("()()", 0)]
@@ -24,7 +19,7 @@ public class day1Tests
     [TestCase(")())())", -3)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        day.Part_1(input).Should().Be(expected);
+        Day1.Part_1(input).Should().Be(expected);
     }
     
     
@@ -33,6 +28,6 @@ public class day1Tests
     [TestCase("()())", 5)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        day.Part_2(input).Should().Be(expected);
+        Day1.Part_2(input).Should().Be(expected);
     }
 }

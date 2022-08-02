@@ -6,13 +6,6 @@ namespace solutions_tests._2015;
 
 public class Day5Tests
 {
-    private Day5 _day;
-
-    public Day5Tests()
-    {
-        _day = new Day5();
-    }
-
     [TestCase("ugknbfddgicrmopn", 1)]
     [TestCase("aaa", 1)]
     [TestCase("jchzalrnumimnmhp", 0)]
@@ -20,7 +13,7 @@ public class Day5Tests
     [TestCase("dvszwmarrgswjxmb", 0)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
-        _day.Part_1(input).Should().Be(expected);
+        Day5.Part_1(input).Should().Be(expected);
     }
     
     
@@ -31,6 +24,6 @@ public class Day5Tests
     [TestCase("ieodomkazucvgmuy", 0)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
-        _day.Part_2(input).Should().Be(expected);
+        Day5.Part_2(input).Should().Be(expected);
     }
 }

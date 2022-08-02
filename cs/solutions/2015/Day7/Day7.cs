@@ -3,7 +3,7 @@ namespace solutions._2015;
 public class Day7
 {
 
-    public int Part_1(string? input = null, string targetWire = "a")
+    public static int Part_1(string? input = null, string targetWire = "a")
     {
         input = input ?? GetInput();
         var wires = new Dictionary<string, Wire>();
@@ -22,7 +22,7 @@ public class Day7
         return wires[targetWire].GetSignal();
     }
     
-    public int Part_2(string? input = null, string targetWire = "a")
+    public static int Part_2(string? input = null, string targetWire = "a")
     {
         input = input ?? GetInput();
         var wires = new Dictionary<string, Wire>();

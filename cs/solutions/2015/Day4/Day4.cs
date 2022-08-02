@@ -4,7 +4,7 @@ namespace solutions._2015;
 
 public class Day4
 {
-    public int Part_1(string? input = null)
+    public static int Part_1(string? input = null)
     {
         input = input ?? GetInput();
         var i = 1;
@@ -22,7 +22,7 @@ public class Day4
         return i;
     }
     
-    public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput();
         var i = 1;
@@ -40,7 +40,7 @@ public class Day4
         return i;
     }
 
-    private string GetInput()
+    private static string GetInput()
     {
         return File.ReadAllText("./2015/Day4/input.txt");
     }

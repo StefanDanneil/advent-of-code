@@ -6,12 +6,6 @@ namespace solutions_tests._2015;
 
 public class Day7Tests
 {
-    private readonly Day7 _day;
-
-    public Day7Tests()
-    {
-        _day = new Day7();
-    }
 
     [TestCase("123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i", "d", 72, TestName = "It sets wire d correctly")]
     [TestCase("123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i", "e", 507, TestName = "It sets wire e correctly")]
@@ -24,13 +18,13 @@ public class Day7Tests
     [TestCase("123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i\nx -> j", "j", 123, TestName = "It sets wire j correctly")]
     public void it_solves_part_1_according_to_examples(string input, string wire, int expected)
     {
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
-        _day.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
+        Day7.Part_1(input, wire).Should().Be(expected);
     }
 }

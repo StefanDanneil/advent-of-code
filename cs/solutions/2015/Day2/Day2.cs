@@ -32,7 +32,7 @@ public class Day2
         return output;
     }
     
-    public int Part_2(string? input = null)
+    public static int Part_2(string? input = null)
     {
         input = input ?? GetInput(); 
         var rows = input.Split('\n');
