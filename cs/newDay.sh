@@ -2,7 +2,7 @@
 
 determineNextDay () {
   array=($(ls ./solutions/"$YEAR"))
-  highestNumber=1;
+  highestNumber=0;
   
   for i in "${array[@]}"
   do : 
@@ -11,8 +11,7 @@ determineNextDay () {
         highestNumber=$dayNumber   
      fi
   done  
-  [[ $highestNumber = 1 ]] && output=1 || output=$((highestNumber + 1))
-  echo $output
+  echo $output $((highestNumber + 1))
 }
 
 if test -z "$1"
