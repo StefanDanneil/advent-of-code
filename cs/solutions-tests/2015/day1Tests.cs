@@ -6,8 +6,6 @@ namespace solutions_tests._2015;
 
 public class Day1Tests
 {
-
-
     [TestCase("(())", 0)]
     [TestCase("()()", 0)]
     [TestCase("(((", 3)]
