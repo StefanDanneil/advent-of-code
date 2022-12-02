@@ -4,7 +4,7 @@ public class Day2
 {
     public static int Part_1(string? input = null)
     {
-        input = input ?? GetInput();
+        input ??= GetInput();
         var rows = input.Split('\n');
         var output = 0;
         

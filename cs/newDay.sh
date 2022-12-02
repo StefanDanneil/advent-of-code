@@ -37,13 +37,13 @@ public static class $DAY_NAME
 {
     public static int Part_1(string? input = null)
     {
-        input = input ?? GetInput();
+        input ??=  GetInput();
         throw new NotImplementedException();
     }
 
     public static int Part_2(string? input = null)
     {
-        input = input ?? GetInput();
+        input ??= GetInput();
         throw new NotImplementedException();
     }
 
