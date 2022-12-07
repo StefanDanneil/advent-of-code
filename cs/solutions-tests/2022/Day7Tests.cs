@@ -7,29 +7,31 @@ namespace solutions_tests._2022;
 
 public class Day7Tests
 {
-    private const string TestInput = @"$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k";
+    private const string TestInput = """
+        $ cd /
+        $ ls
+        dir a
+        14848514 b.txt
+        8504156 c.dat
+        dir d
+        $ cd a
+        $ ls
+        dir e
+        29116 f
+        2557 g
+        62596 h.lst
+        $ cd e
+        $ ls
+        584 i
+        $ cd ..
+        $ cd ..
+        $ cd d
+        $ ls
+        4060174 j
+        8033020 d.log
+        5626152 d.ext
+        7214296 k
+        """;
     
     [TestCase(TestInput, 95437)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
@@ -40,7 +42,7 @@ $ ls
     [Test]
     public void it_sets_the_correct_size_of_directories()
     {
-        var directories = Day7.GetDirectories(TestInput.Split('\n'));
+        var directories = Day7.GetDirectories(TestInput.Split('\n')).ToList();
         
         directories.First(d => d.Name == "/").Size.Should().Be(48381165);
         directories.First(d => d.Name == "e").Size.Should().Be(584);

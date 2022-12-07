@@ -14,23 +14,27 @@ public class Day4Tests
     [TestCase("2-8,3-7", 1)]
     [TestCase("6-6,4-6", 1)]
     [TestCase("2-6,4-8", 0)]
-    [TestCase(@"2-4,6-8
+    [TestCase("""
+        2-4,6-8
         2-3,4-5
-    5-7,7-9
-    2-8,3-7
-    6-6,4-6
-    2-6,4-8", 2)]
+        5-7,7-9
+        2-8,3-7
+        6-6,4-6
+        2-6,4-8
+        """, 2)]
     public void it_solves_part_1_according_to_examples(string input, int expected)
     {
         Day4.Part_1(input).Should().Be(expected);
     }
 
-    [TestCase(@"2-4,6-8
+    [TestCase("""
+        2-4,6-8
         2-3,4-5
-    5-7,7-9
-    2-8,3-7
-    6-6,4-6
-    2-6,4-8", 4)]
+        5-7,7-9
+        2-8,3-7
+        6-6,4-6
+        2-6,4-8
+        """, 4)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
         Day4.Part_2(input).Should().Be(expected);

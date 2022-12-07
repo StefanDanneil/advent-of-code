@@ -61,8 +61,6 @@ public static class Day7
         // start out with root as current directory
         var currentDirectory = new Directory("/");
 
-        
-        
         directories.Add(currentDirectory);
         
         foreach (var line in lines.Skip(1)) // skip first line as we already inserted the root
