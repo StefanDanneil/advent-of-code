@@ -17,22 +17,21 @@ public static class Day8
         return GetTrees(grid).Count(t => t.Visible);
     }
 
-    private static IEnumerable<Tree> GetTrees(IEnumerable<IEnumerable<int>> grid)
+    private static IEnumerable<Tree> GetTrees(IEnumerable<IEnumerable<int>> enumerableInt)
     {
         var trees =  new List<Tree>();
         
-        var enumerable = grid as IEnumerable<int>[] ?? grid.ToArray();
+        var grid = enumerableInt as IEnumerable<int>[] ?? enumerableInt.ToArray();
 
-        for (var y = 0; y < enumerable.Length; y++)
+        for (var y = 0; y < grid.Length; y++)
         {
-            var currentRow = enumerable[y].ToArray();
-            for (var x = 0; x < enumerable[y].Count(); x++)
+            var currentRow = grid[y].ToArray();
+            for (var x = 0; x < grid[y].Count(); x++)
             {
                 var currentTree = new Tree{ Height = currentRow[x]};
                 int left = 0, up = 0, right = 0, down = 0;
-                bool visibleLeft = true, visibleUp = true, visibleRight = true, visibleDown = true;
-                
-                if (x == 0 || x == currentRow.Length-1 || y == 0 || y == enumerable.Length-1)
+
+                if (x == 0 || x == currentRow.Length-1 || y == 0 || y == grid.Length-1)
                 {
                     currentTree.Visible = true;
                     currentTree.ScenicScore = 0;
@@ -44,40 +43,34 @@ public static class Day8
                 for (var k = x-1; k >= 0; k--)
                 {
                     left++;
-                    if (currentRow[k] < currentTree.Height) continue;
-                    visibleLeft = false;
-                    break;
+                    if (currentRow[k] >= currentTree.Height) break;
+                    if (k == 0) currentTree.Visible = true;
                 }
 
                 // go up
                 for (var k = y -1; k >= 0; k--)
                 {
                     up++;
-                    if (enumerable[k].ToArray()[x] < currentTree.Height) continue;
-                    visibleUp = false;
-                    break;
+                    if (grid[k].ToArray()[x] >= currentTree.Height) break;
+                    if (k == 0) currentTree.Visible = true;
                 }
 
                 // go right
                 for (var k = x + 1; k < currentRow.Length; k++)
                 {
                     right++;
-                    if (currentRow[k] < currentTree.Height) continue;
-                    visibleRight = false;
-                    break;
+                    if (currentRow[k] >= currentTree.Height) break;
+                    if (k == currentRow.Length -1) currentTree.Visible = true;
                 }
 
                 // go down
-                for (var k = y + 1; k < enumerable.Length; k++)
+                for (var k = y + 1; k < grid.Length; k++)
                 {
                     down++;
-                    if (enumerable[k].ToArray()[x] < currentTree.Height) continue;
-                    visibleDown = false;
-                    break;
+                    if (grid[k].ToArray()[x] >= currentTree.Height) break;
+                    if (k == grid.Length -1) currentTree.Visible = true;
                 }
 
-                currentTree.Visible = visibleLeft || visibleUp || visibleRight || visibleDown;
-                
                 currentTree.ScenicScore = left * up * right * down;
                 
                 trees.Add(currentTree);
