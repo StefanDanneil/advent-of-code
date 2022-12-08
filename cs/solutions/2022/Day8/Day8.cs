@@ -4,7 +4,7 @@ public static class Day8
 {
     private class Tree
     {
-        public bool Visible { get; set; } = false;
+        public bool Visible { get; set; }
         public int ScenicScore { get; set; }
         public required int Height { get; init; }
     }
@@ -23,18 +23,16 @@ public static class Day8
         
         var enumerable = grid as IEnumerable<int>[] ?? grid.ToArray();
 
-        for (var rowIndex = 0; rowIndex < enumerable.Length; rowIndex++)
+        for (var x = 0; x < enumerable.Length; x++)
         {
-            var currentRow = enumerable[rowIndex].ToArray();
-            for (var columnIndex = 0; columnIndex < enumerable[rowIndex].Count(); columnIndex++)
+            var currentRow = enumerable[x].ToArray();
+            for (var y = 0; y < enumerable[x].Count(); y++)
             {
-                var currentTree = new Tree{ Height = currentRow[columnIndex]};
-                var outerTree = columnIndex == 0 || columnIndex == currentRow.Length-1 || rowIndex == 0 || rowIndex == enumerable.Length-1;
-
-                int left = 0, top = 0, right = 0, down = 0;
-                bool visibleLeft = true, visibleTop = true, visibleRight = true, visibleDown = true;
+                var currentTree = new Tree{ Height = currentRow[y]};
+                int left = 0, up = 0, right = 0, down = 0;
+                bool visibleLeft = true, visibleUp = true, visibleRight = true, visibleDown = true;
                 
-                if (outerTree)
+                if (y == 0 || y == currentRow.Length-1 || x == 0 || x == enumerable.Length-1)
                 {
                     currentTree.Visible = true;
                     currentTree.ScenicScore = 0;
@@ -43,44 +41,44 @@ public static class Day8
                 }
                 
                 // go left
-                for (var k = 1; k <= columnIndex; k++)
+                for (var k = 1; k <= y; k++)
                 {
-                    left = k;
-                    if (currentRow[columnIndex - k] < currentTree.Height) continue;
+                    left++;
+                    if (currentRow[y - k] < currentTree.Height) continue;
                     visibleLeft = false;
                     break;
                 }
 
                 // go up
-                for (var k = 1; k <= rowIndex; k++)
+                for (var k = 1; k <= x; k++)
                 {
-                    top = k;
-                    if (enumerable[rowIndex-k].ToArray()[columnIndex] < currentTree.Height) continue;
-                    visibleTop = false;
+                    up++;
+                    if (enumerable[x-k].ToArray()[y] < currentTree.Height) continue;
+                    visibleUp = false;
                     break;
                 }
 
                 // go right
-                for (var k = 1; k < currentRow.Length - columnIndex; k++)
+                for (var k = 1; k < currentRow.Length - y; k++)
                 {
-                    right = k;
-                    if (currentRow[columnIndex + k] < currentTree.Height) continue;
+                    right++;
+                    if (currentRow[y + k] < currentTree.Height) continue;
                     visibleRight = false;
                     break;
                 }
 
                 // go down
-                for (var k = 1; k < enumerable.Length - rowIndex; k++)
+                for (var k = 1; k < enumerable.Length - x; k++)
                 {
                     down = k;
-                    if (enumerable[rowIndex + k].ToArray()[columnIndex] < currentTree.Height) continue;
+                    if (enumerable[x + k].ToArray()[y] < currentTree.Height) continue;
                     visibleDown = false;
                     break;
                 }
 
-                currentTree.Visible = visibleLeft || visibleTop || visibleRight || visibleDown;
+                currentTree.Visible = visibleLeft || visibleUp || visibleRight || visibleDown;
                 
-                currentTree.ScenicScore = left * top * right * down;
+                currentTree.ScenicScore = left * up * right * down;
                 
                 trees.Add(currentTree);
             }
