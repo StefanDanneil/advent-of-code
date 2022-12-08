@@ -31,6 +31,7 @@ public static class Day8
                 var currentTree = new Tree{ Height = currentRow[x]};
                 int left = 0, up = 0, right = 0, down = 0;
 
+                // outer trees will always be visible and have ScenicScore 0
                 if (x == 0 || x == currentRow.Length-1 || y == 0 || y == grid.Length-1)
                 {
                     currentTree.Visible = true;
