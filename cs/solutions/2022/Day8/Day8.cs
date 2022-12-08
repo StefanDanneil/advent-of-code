@@ -41,37 +41,37 @@ public static class Day8
                 }
                 
                 // go left
-                for (var k = 1; k <= x; k++)
+                for (var k = x-1; k >= 0; k--)
                 {
                     left++;
-                    if (currentRow[x - k] < currentTree.Height) continue;
+                    if (currentRow[k] < currentTree.Height) continue;
                     visibleLeft = false;
                     break;
                 }
 
                 // go up
-                for (var k = 1; k <= y; k++)
+                for (var k = y -1; k >= 0; k--)
                 {
                     up++;
-                    if (enumerable[y-k].ToArray()[x] < currentTree.Height) continue;
+                    if (enumerable[k].ToArray()[x] < currentTree.Height) continue;
                     visibleUp = false;
                     break;
                 }
 
                 // go right
-                for (var k = 1; k < currentRow.Length - x; k++)
+                for (var k = x + 1; k < currentRow.Length; k++)
                 {
                     right++;
-                    if (currentRow[x + k] < currentTree.Height) continue;
+                    if (currentRow[k] < currentTree.Height) continue;
                     visibleRight = false;
                     break;
                 }
 
                 // go down
-                for (var k = 1; k < enumerable.Length - y; k++)
+                for (var k = y + 1; k < enumerable.Length; k++)
                 {
-                    down = k;
-                    if (enumerable[y + k].ToArray()[x] < currentTree.Height) continue;
+                    down++;
+                    if (enumerable[k].ToArray()[x] < currentTree.Height) continue;
                     visibleDown = false;
                     break;
                 }
