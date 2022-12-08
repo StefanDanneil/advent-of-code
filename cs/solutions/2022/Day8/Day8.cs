@@ -23,16 +23,16 @@ public static class Day8
         
         var enumerable = grid as IEnumerable<int>[] ?? grid.ToArray();
 
-        for (var x = 0; x < enumerable.Length; x++)
+        for (var y = 0; y < enumerable.Length; y++)
         {
-            var currentRow = enumerable[x].ToArray();
-            for (var y = 0; y < enumerable[x].Count(); y++)
+            var currentRow = enumerable[y].ToArray();
+            for (var x = 0; x < enumerable[y].Count(); x++)
             {
-                var currentTree = new Tree{ Height = currentRow[y]};
+                var currentTree = new Tree{ Height = currentRow[x]};
                 int left = 0, up = 0, right = 0, down = 0;
                 bool visibleLeft = true, visibleUp = true, visibleRight = true, visibleDown = true;
                 
-                if (y == 0 || y == currentRow.Length-1 || x == 0 || x == enumerable.Length-1)
+                if (x == 0 || x == currentRow.Length-1 || y == 0 || y == enumerable.Length-1)
                 {
                     currentTree.Visible = true;
                     currentTree.ScenicScore = 0;
@@ -41,37 +41,37 @@ public static class Day8
                 }
                 
                 // go left
-                for (var k = 1; k <= y; k++)
+                for (var k = 1; k <= x; k++)
                 {
                     left++;
-                    if (currentRow[y - k] < currentTree.Height) continue;
+                    if (currentRow[x - k] < currentTree.Height) continue;
                     visibleLeft = false;
                     break;
                 }
 
                 // go up
-                for (var k = 1; k <= x; k++)
+                for (var k = 1; k <= y; k++)
                 {
                     up++;
-                    if (enumerable[x-k].ToArray()[y] < currentTree.Height) continue;
+                    if (enumerable[y-k].ToArray()[x] < currentTree.Height) continue;
                     visibleUp = false;
                     break;
                 }
 
                 // go right
-                for (var k = 1; k < currentRow.Length - y; k++)
+                for (var k = 1; k < currentRow.Length - x; k++)
                 {
                     right++;
-                    if (currentRow[y + k] < currentTree.Height) continue;
+                    if (currentRow[x + k] < currentTree.Height) continue;
                     visibleRight = false;
                     break;
                 }
 
                 // go down
-                for (var k = 1; k < enumerable.Length - x; k++)
+                for (var k = 1; k < enumerable.Length - y; k++)
                 {
                     down = k;
-                    if (enumerable[x + k].ToArray()[y] < currentTree.Height) continue;
+                    if (enumerable[y + k].ToArray()[x] < currentTree.Height) continue;
                     visibleDown = false;
                     break;
                 }
