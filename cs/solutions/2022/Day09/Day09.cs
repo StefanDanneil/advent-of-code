@@ -8,26 +8,28 @@ public static class Day09
     {
         public int X { get; private set; }
         public int Y { get; private set; }
+
+        private string Name { get; set; }
         
         private RopePart? Head { get; init; }
         
         private RopePart? Tail { get; set; }
 
-        public void AddKnot()
+        public void AddKnot(string name)
         {
             if (Tail is null)
             {
-                Tail = new RopePart { Head = this };
+                Tail = new RopePart { Head = this, Name = name  };
             }
             else
             {
-                Tail.AddKnot();
+                Tail.AddKnot(name);
             }
         }
 
         public RopePart GetTail()
         {
-            return Tail ?? this;
+            return Tail is null ? this : Tail.GetTail();
         }
         
         public void Move(string direction)
@@ -49,7 +51,7 @@ public static class Day09
                 default:
                     throw new Exception($"{direction} is not a valid direction");
             };  
-            Tail.FollowHead();
+            Tail?.FollowHead();
         }
         
         private void FollowHead()
@@ -60,6 +62,7 @@ public static class Day09
             if (Head!.Y == Y) // should move only vertically
             {
                 X = Head.X > X ? X + 1 : X - 1;
+                Tail?.FollowHead();
                 return;
             }
                 
@@ -67,6 +70,7 @@ public static class Day09
             if (Head.X == X) // should move only horizontally
             {
                 Y = Head.Y > Y ? Y + 1 : Y - 1;
+                Tail?.FollowHead();
                 return;
             }
 
@@ -80,6 +84,8 @@ public static class Day09
                 Y--;
                 X = X = Head.X > X ? X + 1 : X - 1;
             }
+            
+            Tail?.FollowHead();
         }
 
         public bool IsTouchingHead()
@@ -122,7 +128,7 @@ public static class Day09
         var instructions = input.Split('\n').Select(i => i.Split(' '));
         var visitedTailIndexes = new List<string>(){"X0Y0"};
         var head = new RopePart();
-        head.AddKnot();
+        head.AddKnot("T");
         var tail = head.GetTail();
 
         foreach (var instruction in instructions)
@@ -143,7 +149,34 @@ public static class Day09
     public static int Part_2(string? input = null)
     {
         input ??= GetInput();
-        throw new NotImplementedException();
+        input ??= GetInput();
+        var instructions = input.Split('\n').Select(i => i.Split(' '));
+        var visitedTailIndexes = new List<string>(){"X0Y0"};
+        var head = new RopePart();
+        head.AddKnot("1");
+        head.AddKnot("2");
+        head.AddKnot("3");
+        head.AddKnot("4");
+        head.AddKnot("5");
+        head.AddKnot("6");
+        head.AddKnot("7");
+        head.AddKnot("8");
+        head.AddKnot("9");
+        var tail = head.GetTail();
+
+        foreach (var instruction in instructions)
+        {
+            if (instruction is not [var direction, var value]) throw new Exception("invalid instruction");
+            var upper = int.Parse(value);
+            
+            for (var i = 0; i < upper; i++)
+            {
+                head.Move(direction);
+                visitedTailIndexes.Add($"X{tail.X}Y{tail.Y}");
+            }
+        }
+        
+        return visitedTailIndexes.Distinct().Count();
     }
 
     private static string GetInput()
