@@ -9,10 +9,27 @@ public static class Day09
         public int X { get; private set; }
         public int Y { get; private set; }
         
-        public RopePart? Head { get; set; }
+        private RopePart? Head { get; init; }
         
-        public RopePart Tail { get; set; }
+        private RopePart? Tail { get; set; }
 
+        public void AddKnot()
+        {
+            if (Tail is null)
+            {
+                Tail = new RopePart { Head = this };
+            }
+            else
+            {
+                Tail.AddKnot();
+            }
+        }
+
+        public RopePart GetTail()
+        {
+            return Tail ?? this;
+        }
+        
         public void Move(string direction)
         {
             switch (direction)
@@ -105,8 +122,8 @@ public static class Day09
         var instructions = input.Split('\n').Select(i => i.Split(' '));
         var visitedTailIndexes = new List<string>(){"X0Y0"};
         var head = new RopePart();
-        var tail = new RopePart(){Head = head};
-        head.Tail = tail;
+        head.AddKnot();
+        var tail = head.GetTail();
 
         foreach (var instruction in instructions)
         {
