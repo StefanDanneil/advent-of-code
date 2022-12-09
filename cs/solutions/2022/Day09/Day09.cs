@@ -1,5 +1,3 @@
-using System.Net;
-
 namespace solutions._2022;
 
 public static class Day09
@@ -9,21 +7,19 @@ public static class Day09
         public int X { get; private set; }
         public int Y { get; private set; }
 
-        private string Name { get; set; }
-        
         private RopePart? Head { get; init; }
         
         private RopePart? Tail { get; set; }
 
-        public void AddKnot(string name)
+        public void AddKnot()
         {
             if (Tail is null)
             {
-                Tail = new RopePart { Head = this, Name = name  };
+                Tail = new RopePart { Head = this };
             }
             else
             {
-                Tail.AddKnot(name);
+                Tail.AddKnot();
             }
         }
 
@@ -50,7 +46,7 @@ public static class Day09
                     break;
                 default:
                     throw new Exception($"{direction} is not a valid direction");
-            };  
+            }  
             Tail?.FollowHead();
         }
         
@@ -88,7 +84,7 @@ public static class Day09
             Tail?.FollowHead();
         }
 
-        public bool IsTouchingHead()
+        private bool IsTouchingHead()
         {
             if (Head!.X == X && Head.Y == Y)
                 return true; // same space
@@ -126,9 +122,9 @@ public static class Day09
     {
         input ??= GetInput();
         var instructions = input.Split('\n').Select(i => i.Split(' '));
-        var visitedTailIndexes = new List<string>(){"X0Y0"};
+        var visitedTailIndexes = new List<string>{"X0Y0"};
         var head = new RopePart();
-        head.AddKnot("T");
+        head.AddKnot();
         var tail = head.GetTail();
 
         foreach (var instruction in instructions)
@@ -149,19 +145,18 @@ public static class Day09
     public static int Part_2(string? input = null)
     {
         input ??= GetInput();
-        input ??= GetInput();
         var instructions = input.Split('\n').Select(i => i.Split(' '));
         var visitedTailIndexes = new List<string>(){"X0Y0"};
         var head = new RopePart();
-        head.AddKnot("1");
-        head.AddKnot("2");
-        head.AddKnot("3");
-        head.AddKnot("4");
-        head.AddKnot("5");
-        head.AddKnot("6");
-        head.AddKnot("7");
-        head.AddKnot("8");
-        head.AddKnot("9");
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
+        head.AddKnot();
         var tail = head.GetTail();
 
         foreach (var instruction in instructions)
