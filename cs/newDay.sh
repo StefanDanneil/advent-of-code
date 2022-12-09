@@ -3,15 +3,17 @@
 determineNextDay () {
   array=($(ls ./solutions/"$YEAR"))
   highestNumber=0;
-  
+
   for i in "${array[@]}"
   do : 
-    dayNumber=${i:3:3}
+    [[ ${i:3:1} = 0 ]] && dayNumber=${i:4:1} || dayNumber=${i:3:2}    
      if (( $dayNumber > $highestNumber )); then
         highestNumber=$dayNumber   
      fi
   done  
-  echo $output $((highestNumber + 1))
+  newDayNumber="$((highestNumber + 1))";
+  [[ ${#newDayNumber} -gt 1 ]] && newDayNumber=$newDayNumber || newDayNumber="0$newDayNumber" 
+  echo $newDayNumber
 }
 
 if test -z "$1"
@@ -20,7 +22,7 @@ then
   exit 1
 fi
 
-YEAR="$1"
+YEAR="$1"  
 DAY_NAME=Day"$(determineNextDay)"
 TEST_FILE_NAME="$DAY_NAME"Tests
 
