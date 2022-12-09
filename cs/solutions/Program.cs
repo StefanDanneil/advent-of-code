@@ -39,3 +39,5 @@ Console.WriteLine("2022 day 7 part 1 result is: " + solutions._2022.Day07.Part_1
 Console.WriteLine("2022 day 7 part 2 result is: " + solutions._2022.Day07.Part_2());
 Console.WriteLine("2022 day 8 part 1 result is: " + solutions._2022.Day08.Part_1());
 Console.WriteLine("2022 day 8 part 2 result is: " + solutions._2022.Day08.Part_2());
+Console.WriteLine("2022 day 9 part 1 result is: " + solutions._2022.Day09.Part_1());
+Console.WriteLine("2022 day 9 part 2 result is: " + solutions._2022.Day09.Part_2());
