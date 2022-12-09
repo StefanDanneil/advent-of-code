@@ -4,10 +4,14 @@ namespace solutions._2022;
 
 public static class Day09
 {
-    private class Head
+    private class RopePart
     {
         public int X { get; private set; }
         public int Y { get; private set; }
+        
+        public RopePart? Head { get; set; }
+        
+        public RopePart Tail { get; set; }
 
         public void Move(string direction)
         {
@@ -28,71 +32,67 @@ public static class Day09
                 default:
                     throw new Exception($"{direction} is not a valid direction");
             };  
+            Tail.FollowHead();
         }
-    }
-
-    private class Tail
-    {
-        public int X { get; set; } = 0;
-        public int Y { get; private set; }
-        public void FollowHead(Head head)
+        
+        private void FollowHead()
         {
-            if (IsTouchingHead(head))
-                throw new Exception("I should not end up here");
+            if (IsTouchingHead())
+                return;
 
-            if (head.Y == Y) // should move only vertically
+            if (Head!.Y == Y) // should move only vertically
             {
-                X = head.X > X ? X + 1 : X - 1;
+                X = Head.X > X ? X + 1 : X - 1;
                 return;
             }
                 
 
-            if (head.X == X) // should move only horizontally
+            if (Head.X == X) // should move only horizontally
             {
-                Y = head.Y > Y ? Y + 1 : Y - 1;
+                Y = Head.Y > Y ? Y + 1 : Y - 1;
                 return;
             }
 
-            if (head.Y > Y) // should move diagonally upwards  
+            if (Head.Y > Y) // should move diagonally upwards  
             {
                 Y++;
-                X = X = head.X > X ? X + 1 : X - 1;
+                X = X = Head.X > X ? X + 1 : X - 1;
             }
             else
             {
                 Y--;
-                X = X = head.X > X ? X + 1 : X - 1;
+                X = X = Head.X > X ? X + 1 : X - 1;
             }
         }
 
-        public bool IsTouchingHead(Head head)
+        public bool IsTouchingHead()
         {
-            if (head.X == X && head.Y == Y)
+            if (Head!.X == X && Head.Y == Y)
                 return true; // same space
 
-            if (head.X == X && head.Y.IsBetween(Y - 1, Y + 1))
+            if (Head.X == X && Head.Y.IsBetween(Y - 1, Y + 1))
                 return true; // head either directly above or directly below
             
             
-            if (head.Y == Y && head.X.IsBetween(X - 1, X + 1))
-                    return true; // head either directly to the left or right
+            if (Head.Y == Y && Head.X.IsBetween(X - 1, X + 1))
+                return true; // head either directly to the left or right
 
-            if (head.X == X -1 && head.Y == Y -1)
+            if (Head.X == X -1 && Head.Y == Y -1)
                 return true; // head directly diagonally down to the left
             
-            if (head.X == X -1 && head.Y == Y + 1)
+            if (Head.X == X -1 && Head.Y == Y + 1)
                 return true; // head directly diagonally up to the left
             
-            if (head.X == X + 1 && head.Y == Y + 1)
+            if (Head.X == X + 1 && Head.Y == Y + 1)
                 return true; // head directly diagonally up to the right
             
-            if (head.X == X + 1 && head.Y == Y - 1)
+            if (Head.X == X + 1 && Head.Y == Y - 1)
                 return true; // head directly diagonally down to the right
 
             return false;
         }
     }
-    
+
     private static bool IsBetween<T>(this T item, T start, T end)
     {
         return Comparer<T>.Default.Compare(item, start) >= 0
@@ -104,8 +104,9 @@ public static class Day09
         input ??= GetInput();
         var instructions = input.Split('\n').Select(i => i.Split(' '));
         var visitedTailIndexes = new List<string>(){"X0Y0"};
-        var head = new Head();
-        var tail = new Tail();
+        var head = new RopePart();
+        var tail = new RopePart(){Head = head};
+        head.Tail = tail;
 
         foreach (var instruction in instructions)
         {
@@ -115,9 +116,6 @@ public static class Day09
             for (var i = 0; i < upper; i++)
             {
                 head.Move(direction);
-                var isTouching = tail.IsTouchingHead(head);
-                if (isTouching) continue;
-                tail.FollowHead(head);
                 visitedTailIndexes.Add($"X{tail.X}Y{tail.Y}");
             }
         }
