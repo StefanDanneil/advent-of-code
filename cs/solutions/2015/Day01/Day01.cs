@@ -33,6 +33,6 @@ public static class Day01
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2015/day1/input.txt");
+        return File.ReadAllText("./2015/day01/input.txt");
     }
 }

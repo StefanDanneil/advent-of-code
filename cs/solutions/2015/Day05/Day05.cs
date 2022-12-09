@@ -21,7 +21,7 @@ public static class Day05
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2015/Day5/input.txt");
+        return File.ReadAllText("./2015/Day05/input.txt");
     }
 
     private static bool HasAtLeastThreeVowels(string input)

@@ -82,6 +82,6 @@ public static class Day09
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2015/Day9/input.txt");
+        return File.ReadAllText("./2015/Day09/input.txt");
     }
 }
