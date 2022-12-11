@@ -41,3 +41,9 @@ Console.WriteLine("2022 day 8 part 1 result is: " + solutions._2022.Day08.Part_1
 Console.WriteLine("2022 day 8 part 2 result is: " + solutions._2022.Day08.Part_2());
 Console.WriteLine("2022 day 9 part 1 result is: " + solutions._2022.Day09.Part_1());
 Console.WriteLine("2022 day 9 part 2 result is: " + solutions._2022.Day09.Part_2());
+Console.WriteLine("2022 day 10 part 1 result is: " + solutions._2022.Day10.Part_1());
+Console.WriteLine("2022 day 10 part 2 result is:");
+foreach (var s in solutions._2022.Day10.Part_2())
+{
+    Console.WriteLine(s);   
+}

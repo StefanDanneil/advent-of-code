@@ -112,12 +112,6 @@ public static class Day09
         }
     }
 
-    private static bool IsBetween<T>(this T item, T start, T end)
-    {
-        return Comparer<T>.Default.Compare(item, start) >= 0
-               && Comparer<T>.Default.Compare(item, end) <= 0;
-    }
-    
     public static int Part_1(string? input = null)
     {
         input ??= GetInput();
