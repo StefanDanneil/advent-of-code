@@ -1,4 +1,5 @@
 ﻿using solutions._2015;
+using solutions._2022.Day11;
 
 /* working on 2022 for now 
     Console.WriteLine("2015 day 1 part 1 result is: " + Day1.Part_1());
@@ -47,3 +48,5 @@ foreach (var s in solutions._2022.Day10.Part_2())
 {
     Console.WriteLine(s);   
 }
+Console.WriteLine("2022 day 11 part 1 result is: " + Day11.Part_1());
+Console.WriteLine("2022 day 11 part 2 result is: " + Day11.Part_2());
