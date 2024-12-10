@@ -53,3 +53,5 @@
 
 Console.WriteLine($"2024 day 1 part 1 result is: {Day01.Part_1()}");
 Console.WriteLine($"2024 day 1 part 2 result is: {Day01.Part_2()}");
+Console.WriteLine($"2024 day 2 part 1 result is: {Day02.Part_1()}");
+Console.WriteLine($"2024 day 2 part 2 result is: {Day02.Part_2()}");
