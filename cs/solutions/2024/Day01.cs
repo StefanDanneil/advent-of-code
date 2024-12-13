@@ -1,6 +1,6 @@
 namespace solutions._2024;
 
-public static class Day01
+public class Day01 : IDay
 {
     public static int Part_1(string? input = null)
     {
@@ -59,6 +59,6 @@ public static class Day01
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2024/Day01/input.txt");
+        return File.ReadAllText("./2024/Input/day01.txt");
     }
 }

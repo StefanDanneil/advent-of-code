@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace solutions._2024;
 
-public static class Day03
+public class Day03 : IDay
 {
     public static int Part_1(string? input = null)
     {
@@ -43,6 +43,6 @@ public static class Day03
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2024/Day03/input.txt");
+        return File.ReadAllText("./2024/Input/day03.txt");
     }
 }

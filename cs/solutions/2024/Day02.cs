@@ -1,8 +1,6 @@
-using System.Security.Claims;
-
 namespace solutions._2024;
 
-public static class Day02
+public class Day02 : IDay
 {
     public static int Part_1(string? input = null)
     {
@@ -25,7 +23,6 @@ public static class Day02
 
             if (currentNumber == nextNumber)
             {
-                Console.WriteLine($"row {String.Join(", ", numbers)} is unsafe because of equal numbers");
                 return false;
             }
 
@@ -33,7 +30,6 @@ public static class Day02
 
             if (Math.Abs(diff) > 3)
             {
-                Console.WriteLine($"row {String.Join(", ", numbers)} is unsafe because of diff larger than 3");
                 return false;
             }
 
@@ -43,12 +39,10 @@ public static class Day02
 
             if ((previousDiff < 0 && diff > 0) || (previousDiff > 0 && diff < 0))
             {
-                Console.WriteLine($"row {String.Join(", ", numbers)} is unsafe because of change in direction");
                 return false;
             }
         }
-
-        Console.WriteLine($"row {String.Join(", ", numbers)} is safe");
+        
         return true;
     }
 
@@ -86,6 +80,6 @@ public static class Day02
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2024/Day02/input.txt");
+        return File.ReadAllText("./2024/Input/day02.txt");
     }
 }
