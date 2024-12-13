@@ -23,13 +23,14 @@ then
 fi
 
 YEAR="$1"  
+mkdir -p solutions/"$YEAR"
 DAY_NAME=Day"$(determineNextDay)"
 TEST_FILE_NAME="$DAY_NAME"Tests
 
-mkdir solutions/"$YEAR"/"$DAY_NAME"
-cd solutions/"$YEAR"/"$DAY_NAME" || exit 1
+cd solutions/"$YEAR" || exit 1
 
-touch input.txt
+mkdir -p Input
+touch Input/"$DAY_NAME".txt
 touch "$DAY_NAME".cs
 
 cat > "$DAY_NAME".cs << EOF
@@ -51,13 +52,14 @@ public static class $DAY_NAME
 
     private static string GetInput()
     {
-        return File.ReadAllText("./$YEAR/$DAY_NAME/input.txt");
+        return File.ReadAllText("./$YEAR/Input/$DAY_NAME.txt");
     }
 }
 EOF
 
-cd ../../..
+cd ../..
 
+mkdir -p solutions-tests/"$YEAR"
 cd solutions-tests/"$YEAR" || exit 1
 
 touch "$DAY_NAME"Tests.cs
