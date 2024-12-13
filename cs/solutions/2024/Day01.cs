@@ -45,20 +45,11 @@ public class Day01 : IDay
             right.Add(int.Parse(numbers.Last()));
         }
 
-        var sum = 0;
-        
-        for (var i = 0; i < left.Count; i++)
-        {
-            var leftNumber = left[i];
-            var occurences = right.Where(n => n == leftNumber).Count();
-            sum += leftNumber * occurences;
-        }
-
-        return sum;
+        return (from leftNumber in left let number = leftNumber let occurrences = right.Count(n => n == number) select leftNumber * occurrences).Sum();
     }
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2024/Input/day01.txt");
+        return File.ReadAllText("./2024/Input/Day01.txt");
     }
 }

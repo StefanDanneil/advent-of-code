@@ -15,5 +15,5 @@ foreach (var day in days)
     var result1 = (int)part1Method!.Invoke(null, [null])!;
     var result2 = (int)part2Method!.Invoke(null, [null])!;
 
-    Console.WriteLine($"{day.Name} - Part_1: {result1}, Part_2: {result2}");
+    Console.WriteLine($"{day.Name} - Part 1: {result1}, Part 2: {result2}");
 }

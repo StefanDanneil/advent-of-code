@@ -43,6 +43,6 @@ public class Day03 : IDay
 
     private static string GetInput()
     {
-        return File.ReadAllText("./2024/Input/day03.txt");
+        return File.ReadAllText("./2024/Input/Day03.txt");
     }
 }
