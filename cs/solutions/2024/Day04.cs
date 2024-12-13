@@ -103,7 +103,34 @@ public class Day04 : IDay
     public static int Part_2(string? input = null)
     {
         input ??= GetInput();
-        throw new NotImplementedException();
+        var rows = input.Split("\r\n");
+        var targetStrings = new List<string>{ "MAS", "SAM" };
+        var output = 0;
+
+        for (var i = 0; i < rows.Length; i++)
+        {
+            for (var j = 0; j < rows[i].Length; j++)
+            {
+                var currentLetter = rows[i][j];
+
+                if (currentLetter == 'A' && i != 0 && i != rows.Length - 1 && j != 0 && j != rows[i].Length - 1)
+                {
+                    var downWardRightDiagonalString = BuildDownRightDiagonalFromIndex(rows, i - 1, j - 1);
+                    var downWardLeftDiagonalString = BuildDownLeftDiagonalFromIndex(rows, i - 1, j + 1);
+                    
+                    downWardRightDiagonalString = downWardRightDiagonalString.Length < 3 ? downWardRightDiagonalString : downWardRightDiagonalString[..3];
+                    downWardLeftDiagonalString = downWardLeftDiagonalString.Length < 3 ? downWardLeftDiagonalString : downWardLeftDiagonalString[..3];
+                    
+                    Console.WriteLine( "{0} {1} {2} {3}", i, j, downWardRightDiagonalString, downWardLeftDiagonalString);
+                    
+                    if (targetStrings.Contains(downWardRightDiagonalString) &&
+                        targetStrings.Contains(downWardLeftDiagonalString))
+                        output++;
+                }
+            }
+        }
+
+        return output;
     }
 
     private static string GetInput()

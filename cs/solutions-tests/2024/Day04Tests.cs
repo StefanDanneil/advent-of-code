@@ -24,7 +24,19 @@ public class Day04Tests
         Day04.Part_1(input).Should().Be(expected);
     }
 
-    [TestCase("", 0)]
+    [TestCase(
+        """
+        MMMSXXMASM
+        MSAMXMSMSA
+        AMXSXMAAMM
+        MSAMASMSMX
+        XMASAMXAMM
+        XXAMMXXAMA
+        SMSMSASXSS
+        SAXAMASAAA
+        MAMMMXMMMM
+        MXMXAXMASX
+        """, 9)]
     public void it_solves_part_2_according_to_examples(string input, int expected)
     {
         Day04.Part_2(input).Should().Be(expected);
