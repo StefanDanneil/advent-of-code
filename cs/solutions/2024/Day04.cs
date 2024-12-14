@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace solutions._2024;
 
 public class Day04 : IDay
@@ -103,7 +105,7 @@ public class Day04 : IDay
     public static int Part_2(string? input = null)
     {
         input ??= GetInput();
-        var rows = input.Split("\r\n");
+        var rows = Regex.Split(input, @"\r\n|\n|\r");
         var targetStrings = new List<string>{ "MAS", "SAM" };
         var output = 0;
 
@@ -112,7 +114,7 @@ public class Day04 : IDay
             for (var j = 0; j < rows[i].Length; j++)
             {
                 var currentLetter = rows[i][j];
-
+                
                 if (currentLetter == 'A' && i != 0 && i != rows.Length - 1 && j != 0 && j != rows[i].Length - 1)
                 {
                     var downWardRightDiagonalString = BuildDownRightDiagonalFromIndex(rows, i - 1, j - 1);
@@ -120,8 +122,6 @@ public class Day04 : IDay
                     
                     downWardRightDiagonalString = downWardRightDiagonalString.Length < 3 ? downWardRightDiagonalString : downWardRightDiagonalString[..3];
                     downWardLeftDiagonalString = downWardLeftDiagonalString.Length < 3 ? downWardLeftDiagonalString : downWardLeftDiagonalString[..3];
-                    
-                    Console.WriteLine( "{0} {1} {2} {3}", i, j, downWardRightDiagonalString, downWardLeftDiagonalString);
                     
                     if (targetStrings.Contains(downWardRightDiagonalString) &&
                         targetStrings.Contains(downWardLeftDiagonalString))
