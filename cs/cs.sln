@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "solutions", "solutions\solu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "solutions-tests", "solutions-tests\solutions-tests.csproj", "{0A9B3E7D-9141-472E-8C29-C4C19C25B1A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{18141D27-FB44-47EC-B992-6A1C0E0A0DA1}"
+	ProjectSection(SolutionItems) = preProject
+		newDay.sh = newDay.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
