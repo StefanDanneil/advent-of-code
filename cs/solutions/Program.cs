@@ -18,7 +18,7 @@ using solutions._2025;
 //     Console.WriteLine($"{day.Name} - Part 1: {result1}, Part 2: {result2}");
 // }
 
-var result1 = Day03.Part_1();
-var result2 = Day03.Part_2();
+var result1 = Day04.Part_1();
+var result2 = Day04.Part_2();
 
-Console.WriteLine($"{nameof(Day03)} - Part 1: {result1}, Part 2: {result2}");
+Console.WriteLine($"{nameof(Day04)} - Part 1: {result1}, Part 2: {result2}");
