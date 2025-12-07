@@ -4,54 +4,18 @@ namespace solutions._2025;
 
 public static class Day03
 {
-    public static int Part_1(string? input = null)
+    public static BigInteger Part_1(string? input = null)
     {
         input ??=  GetInput();
         var rows = input.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-
-        return rows.Sum(row => FindLargestDoubleJoltage(row.ToArray()));
-    }
-
-    private static int FindLargestDoubleJoltage(char[] input)
-    {
-        var firstPosition = 0;
-        var firstNumber = "";
-        var secondNumber = "";
-
-        // skip last position
-        for (var i = 0; i < input.Length -1; i++)
-        {
-            var number = int.Parse(input[i].ToString());
-            
-            if (firstNumber == "" || number > int.Parse(firstNumber))
-            {
-                firstPosition = i;
-                firstNumber = input[i].ToString();
-            }
-
-            if (number == 9)
-            {
-                break;
-            }
-        }
+        BigInteger totalJoltage = 0;
         
-        // skip first position
-        for (var i = firstPosition +1; i < input.Length; i++)
+        foreach (var row in rows)
         {
-            var number = int.Parse(input[i].ToString());
-            
-            if (secondNumber == "" || number > int.Parse(secondNumber))
-            {
-                secondNumber = input[i].ToString();
-            }
-
-            if (number == 9)
-            {
-                break;
-            }
+            totalJoltage += FindLargestNJoltage(row.ToArray(), 2);
         }
-        
-        return int.Parse(firstNumber + secondNumber);
+
+        return totalJoltage;
     }
     
     public static BigInteger Part_2(string? input = null)
@@ -61,19 +25,19 @@ public static class Day03
         BigInteger totalJoltage = 0;
         foreach (var row in rows)
         {
-            totalJoltage += FindLargestTwelveJoltage(row.ToArray());
+            totalJoltage += FindLargestNJoltage(row.ToArray(), 12);
         }
 
         return totalJoltage;
     }
     
-    private static BigInteger FindLargestTwelveJoltage(char[] input)
+    private static BigInteger FindLargestNJoltage(char[] input, int n)
     {
         var numbers = new List<int>();
         var previousLargestPosition = -1;
-        var numbersLeft = 12;
+        var numbersLeft = n;
 
-        for (var i = 0; i < 12; i++)
+        for (var i = 0; i < n; i++)
         {
             var largestNumber = 0;
             for (var j = previousLargestPosition + 1; j < input.Length - (numbersLeft-1); j++)
